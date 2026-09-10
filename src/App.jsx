@@ -1,11 +1,13 @@
+//npm install react-router
 import { useState } from 'react'
 import './App.css'
-import Homepage from "./_Features/Homepage/Homepage.jsx";
+import { RouterProvider} from 'react-router';
+import  router  from './Routers/main_R.jsx';
 
 function App() {
 
   return (
-      <Homepage />
+      <RouterProvider router={router} />
   )
 }
 
