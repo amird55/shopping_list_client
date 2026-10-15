@@ -2,7 +2,7 @@ import { backURL } from "../../vars";
 
 async function GetAllCategorys() {
     let url=`${backURL}/CTG`;
-    // console.log(url)
+    console.log(url)
     const response = await fetch(url, {
         method: 'GET',
         headers: {
