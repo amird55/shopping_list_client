@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import {GetAllCategorys} from  "./apiCateg"
+import {AddCategory, GetAllCategorys} from "./apiCateg"
 
 function useGetCategories() {
     const query = useQuery({
@@ -11,7 +11,28 @@ function useGetCategories() {
 
     return query;
 }
+function useAddCategory() {
+    const queryClient = useQueryClient();
+
+    const {isLoading:isAdding, mutate:addCategory} = useMutation(
+        {
+            mutationFn: AddCategory,
+            onError: async (err) => {
+                    console.log("err", err)
+            },
+            onSuccess: ()=>{
+                queryClient.invalidateQueries({
+                    queryKey: ['allCategories'],
+                })
+                console.log("הקטגוריה נוספה בהצלחה","success")
+            },
+        }
+    );
+
+    return {isAdding, addCategory};
+}
 
 export {
     useGetCategories,
+    useAddCategory,
 };
