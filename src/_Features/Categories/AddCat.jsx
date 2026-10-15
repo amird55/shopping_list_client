@@ -6,16 +6,18 @@ function AddCat(props) {
 
     const submitMe = () => {
         let formData={
-            name: "Red"
+            name: "Blue"
         }
         addCategory(formData);
     }
 
     return (
         <>
-            <button onClick={submitMe}>
-                Add - red
-            </button>
+            {!isAdding && 
+                <button onClick={submitMe}>
+                    Add - red
+                </button>
+            }
         </>
     );
 }
